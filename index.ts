@@ -7,6 +7,16 @@ import {validateProfile} from './lib/validate-profile.js';
 import {INVALID_REQUEST} from './lib/errors.js';
 import {sliceLeg} from './lib/slice-leg.js';
 import {HafasError} from './lib/errors.js';
+import {
+	toDepartureDTO,
+	toArrivalDTO,
+	toJourneyDTO,
+	toTripDTO,
+	toMovementDTO,
+	toWarningDTO,
+	toLocationDTO,
+	toStationDTO,
+} from './lib/mappers/index.js';
 
 // background info: https://github.com/public-transport/hafas-client/issues/286
 const FORBIDDEN_USER_AGENTS = [
@@ -96,7 +106,14 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		const jnyL = Array.isArray(res.jnyL)
 			? res.jnyL
 			: [];
-		const results = jnyL.map(res => parse(ctx, res))
+		const results = jnyL
+			.map(res => parse(ctx, res))
+			.map((item: any) => {
+				if (resultsField === 'departures') {
+					return toDepartureDTO(item);
+				}
+				return toArrivalDTO(item);
+			})
 			.sort((a: any, b: any) => new Date(a.when).getTime() - new Date(b.when).getTime()); // todo
 
 		return {
@@ -259,7 +276,8 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 
 		const ctx = {profile, opt, common, res};
 		const journeys = res.outConL
-			.map(j => profile.parseJourney(ctx, j));
+			.map(j => profile.parseJourney(ctx, j))
+			.map(j => toJourneyDTO(j));
 
 		return {
 			earlierRef: res.outCtxScrB || null,
@@ -296,7 +314,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		const ctx = {profile, opt, common, res};
 
 		return {
-			journey: profile.parseJourney(ctx, res.outConL[0]),
+			journey: toJourneyDTO(profile.parseJourney(ctx, res.outConL[0])),
 			realtimeDataUpdatedAt: res.planrtTS && res.planrtTS !== '0'
 				? parseInt(res.planrtTS)
 				: null,
@@ -421,10 +439,6 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		const journeys = res.outConL
 			.map(rawJourney => profile.parseJourney(ctx, rawJourney))
 			.map((journey) => {
-			// For the first (transit) leg, HAFAS sometimes returns *all* past
-			// stopovers of the trip, even though it should only return stopovers
-			// between the specified `depAtPrevStop` and the arrival at the
-			// interchange station. We slice the leg accordingly.
 				const fromLegI = journey.legs.findIndex(l => l.tripId === fromTripId);
 				if (fromLegI < 0) {
 					return journey;
@@ -438,7 +452,8 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 						...journey.legs.slice(fromLegI + 2),
 					],
 				};
-			});
+			})
+			.map(j => toJourneyDTO(j));
 
 		return {
 			journeys,
@@ -471,7 +486,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		}
 
 		const ctx = {profile, opt, common, res};
-		return res.match.locL.map(loc => profile.parseLocation(ctx, loc));
+		return res.match.locL.map(loc => toLocationDTO(profile.parseLocation(ctx, loc)));
 	};
 
 	const stop = async (stop: unknown, opt: Record<string, unknown> = {}) => {
@@ -501,7 +516,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		}
 
 		const ctx = {profile, opt, res, common};
-		return profile.parseLocation(ctx, res.locL[0]);
+		return toLocationDTO(profile.parseLocation(ctx, res.locL[0]));
 	};
 
 	const nearby = async (location: unknown, opt: Record<string, unknown> = {}) => {
@@ -526,7 +541,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 
 		// todo: parse `.dur` – walking duration?
 		const ctx = {profile, opt, common, res};
-		const results = res.locL.map(loc => profile.parseNearby(ctx, loc));
+		const results = res.locL.map(loc => toLocationDTO(profile.parseNearby(ctx, loc)));
 		return Number.isInteger(opt.results as number)
 			? results.slice(0, opt.results)
 			: results;
@@ -550,7 +565,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		const {res, common} = await profile.request({profile, opt}, userAgent, req);
 		const ctx = {profile, opt, common, res};
 
-		const trip = profile.parseTrip(ctx, res.journey);
+		const trip = toTripDTO(profile.parseTrip(ctx, res.journey));
 
 		return {
 			trip,
@@ -638,7 +653,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		// todo [breaking]: catch `NO_MATCH` errors, return []
 		const ctx = {profile, opt, common, res};
 
-		const trips = res.jnyL.map(t => profile.parseTrip(ctx, t));
+		const trips = res.jnyL.map(t => toTripDTO(profile.parseTrip(ctx, t)));
 
 		return {
 			trips,
@@ -697,7 +712,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 		}
 		const ctx = {profile, opt, common, res};
 
-		const movements = res.jnyL.map(m => profile.parseMovement(ctx, m));
+		const movements = res.jnyL.map(m => toMovementDTO(profile.parseMovement(ctx, m)));
 
 		return {
 			movements,
@@ -742,15 +757,16 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 			if (!loc) {
 				continue;
 			}
+			const mappedLoc = toStationDTO(loc as any);
 			if (pos.dur !== lastDuration) {
 				lastDuration = pos.dur;
 				i = byDuration.length;
 				byDuration.push({
 					duration: pos.dur,
-					stations: [loc],
+					stations: [mappedLoc],
 				});
 			} else {
-				byDuration[i].stations.push(loc);
+				byDuration[i].stations.push(mappedLoc);
 			}
 		}
 
@@ -789,7 +805,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 
 		const ctx = {profile, opt, common, res};
 		const remarks = (res.msgL || [])
-			.map(w => profile.parseWarning(ctx, w));
+			.map(w => toWarningDTO(profile.parseWarning(ctx, w)));
 
 		return {
 			remarks,
@@ -823,7 +839,7 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 					? l.dirRefL.map(parseDirRef)
 					: null,
 				trips: Array.isArray(l.jnyL)
-					? l.jnyL.map(t => profile.parseTrip(ctx, t))
+					? l.jnyL.map(t => toTripDTO(profile.parseTrip(ctx, t)))
 					: null,
 			};
 		});
@@ -904,3 +920,37 @@ const createClient = (profile: any, userAgent: string, opt: any = {}) => {
 export {
 	createClient,
 };
+
+export type {
+	DepartureDTO,
+	ArrivalDTO,
+	JourneyDTO,
+	JourneyLegDTO,
+	StopoverDTO,
+	FeatureCollectionDTO,
+	StationDTO,
+	AddressDTO,
+	POIDTO,
+	CoordinatesDTO,
+	ParsedLocationDTO,
+	LineDTO,
+	OperatorDTO,
+	TripDTO,
+	MovementDTO,
+	HintDTO,
+	WarningDTO,
+	RemarkDTO,
+	DeparturesResponse,
+	ArrivalsResponse,
+	JourneysResponse,
+	RefreshJourneyResponse,
+	JourneysFromTripResponse,
+	TripResponse,
+	TripsByNameResponse,
+	RadarResponse,
+	RemarksResponse,
+	LinesResponse,
+	LineSearchResultDTO,
+	ReachableFromResponse,
+	ServerInfoResponse,
+} from './dto/index.js';
