@@ -1,8 +1,8 @@
 import tap from 'tap';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as rsagProfile} from '../../p/rsag/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as rsagProfile} from '../../dist/p/rsag/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
 import {testEarlierLaterJourneys} from './lib/earlier-later-journeys.js';

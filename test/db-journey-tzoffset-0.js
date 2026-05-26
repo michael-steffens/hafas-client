@@ -5,8 +5,8 @@ const require = createRequire(import.meta.url);
 
 import tap from 'tap';
 
-import {createClient} from '../index.js';
-import {profile as rawProfile} from '../p/db/index.js';
+import {createClient} from '../dist/index.js';
+import {profile as rawProfile} from '../dist/p/db/index.js';
 const resDTZOffset0 = require('./fixtures/db-journey-dtzoffset-0.json');
 const resATZOffset0 = require('./fixtures/db-journey-atzoffset-0.json');
 

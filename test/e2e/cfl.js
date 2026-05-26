@@ -3,8 +3,8 @@ import assert from 'assert';
 import isRoughlyEqual from 'is-roughly-equal';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as cflProfile} from '../../p/cfl/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as cflProfile} from '../../dist/p/cfl/index.js';
 import {
 	createValidateLine,
 	createValidateJourneyLeg,

@@ -1,8 +1,8 @@
 import tap from 'tap';
 
-import {createClient} from '../../index.js';
-import {profile as rawProfile} from '../../p/db/index.js';
-import {data as loyaltyCards} from '../../p/db/loyalty-cards.js';
+import {createClient} from '../../dist/index.js';
+import {profile as rawProfile} from '../../dist/p/db/index.js';
+import {data as loyaltyCards} from '../../dist/p/db/loyalty-cards.js';
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test');
 const {profile} = client;

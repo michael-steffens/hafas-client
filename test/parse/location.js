@@ -1,6 +1,6 @@
 import tap from 'tap';
 import omit from 'lodash/omit.js';
-import {parseLocation as parse} from '../../parse/location.js';
+import {parseLocation as parse} from '../../dist/parse/location.js';
 
 const profile = {
 	parseLocation: parse,

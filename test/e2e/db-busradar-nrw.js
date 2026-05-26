@@ -2,8 +2,8 @@ import tap from 'tap';
 import isRoughlyEqual from 'is-roughly-equal';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as dbBusradarNrwProfile} from '../../p/db-busradar-nrw/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as dbBusradarNrwProfile} from '../../dist/p/db-busradar-nrw/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testDepartures} from './lib/departures.js';
 import {testArrivals} from './lib/arrivals.js';

@@ -3,15 +3,10 @@
 	"description": "Client for HAFAS public transport APIs.",
 	"version": "6.3.6",
 	"type": "module",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"files": [
-		"index.js",
-		"throttle.js",
-		"retry.js",
-		"lib",
-		"parse",
-		"format",
-		"p",
+		"dist",
 		"docs"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
@@ -71,15 +66,20 @@
 		"@pollyjs/core": "^6.0.5",
 		"@pollyjs/persister-fs": "^6.0.5",
 		"@stylistic/eslint-plugin": "^2.11.0",
+		"@types/lodash": "^4.17.24",
+		"@types/luxon": "^3.7.1",
 		"eslint": "^9.16.0",
 		"globals": "^15.13.0",
 		"is-coordinates": "^2.0.2",
 		"is-roughly-equal": "^0.1.0",
 		"tap": "^19.2.5",
+		"typescript": "^6.0.3",
 		"validate-fptf": "^3.0.0"
 	},
 	"scripts": {
 		"pull-profile-base-data": "./tools/pull-profile-base-data.sh",
+		"build": "tsc",
+		"typecheck": "tsc --noEmit",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"test-unit": "tap test/lib/*.js test/*.js test/format/*.js test/parse/*.js",
@@ -87,7 +87,7 @@
 		"test-integration:record": "VCR_MODE=record tap -t60 -j1 test/e2e/*.js",
 		"test-e2e": "VCR_OFF=true tap -t60 -j16 test/e2e/*.js",
 		"test": "npm run test-unit && npm run test-integration",
-		"prepublishOnly": "npm run lint && npm test"
+		"prepublishOnly": "npm run build && npm run lint && npm test"
 	},
 	"tap": {
 		"disable-coverage": true,

@@ -5,8 +5,8 @@ const require = createRequire(import.meta.url);
 
 import tap from 'tap';
 
-import {createClient} from '../index.js';
-import {profile as rawProfile} from '../p/rejseplanen/index.js';
+import {createClient} from '../dist/index.js';
+import {profile as rawProfile} from '../dist/p/rejseplanen/index.js';
 const res = require('./fixtures/rejseplanen-trip.json');
 import {rejseplanenTrip as expected} from './fixtures/rejseplanen-trip.js';
 

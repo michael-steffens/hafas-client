@@ -2,8 +2,8 @@ import tap from 'tap';
 import isRoughlyEqual from 'is-roughly-equal';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as insaProfile} from '../../p/insa/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as insaProfile} from '../../dist/p/insa/index.js';
 import {
 	createValidateMovement,
 	createValidateJourneyLeg,

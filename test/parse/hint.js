@@ -1,5 +1,5 @@
 import tap from 'tap';
-import {parseHint as parse} from '../../parse/hint.js';
+import {parseHint as parse} from '../../dist/parse/hint.js';
 
 const ctx = {
 	data: {},

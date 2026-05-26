@@ -1,5 +1,5 @@
 import tap from 'tap';
-import {parseDateTime as parse} from '../../parse/date-time.js';
+import {parseDateTime as parse} from '../../dist/parse/date-time.js';
 
 const ctx = {
 	common: {},

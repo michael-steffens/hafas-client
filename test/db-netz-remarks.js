@@ -5,8 +5,8 @@ const require = createRequire(import.meta.url);
 
 import tap from 'tap';
 
-import {parseCommonData as parseCommon} from '../parse/common.js';
-import {defaultProfile} from '../lib/default-profile.js';
+import {parseCommonData as parseCommon} from '../dist/parse/common.js';
+import {defaultProfile} from '../dist/lib/default-profile.js';
 const res = require('./fixtures/db-netz-remarks.json');
 
 const profile = {

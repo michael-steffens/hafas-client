@@ -1,5 +1,5 @@
 import tap from 'tap';
-import {parseWhen as parse} from '../../parse/when.js';
+import {parseWhen as parse} from '../../dist/parse/when.js';
 
 const profile = {
 	parseDateTime: ({profile}, date, time, tzOffset, timestamp = false) => {

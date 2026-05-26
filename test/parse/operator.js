@@ -1,5 +1,5 @@
 import tap from 'tap';
-import {parseOperator as parse} from '../../parse/operator.js';
+import {parseOperator as parse} from '../../dist/parse/operator.js';
 
 const ctx = {
 	data: {},

@@ -7,7 +7,7 @@ const config = [
 	eslintPluginJs.configs.recommended,
 	eslintPluginStylistic.configs['all-flat'],
 	{
-		files: ['**/*.js'],
+		files: ['**/*.js', '**/*.ts'],
 		languageOptions: {
 			ecmaVersion: 'latest',
 			globals: {
@@ -50,7 +50,7 @@ const config = [
 		},
 	},
 	{
-		files: ['test/**', '**/example.js'],
+		files: ['test/**', '**/example.js', '**/example.ts'],
 		rules: {
 			'no-unused-vars': 'off',
 			'@stylistic/semi': 'off',

@@ -1,8 +1,8 @@
 import tap from 'tap';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as cmtaProfile} from '../../p/cmta/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as cmtaProfile} from '../../dist/p/cmta/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
 import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js';

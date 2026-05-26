@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "diagnose": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/diagnose/SKILL.md",
+      "computedHash": "15939a26f86edec2d4862042b8564e5a062cb81d04e047a0cea6305c8830b5f5"
+    },
+    "enforcing-typescript-standards": {
+      "source": "jgeurts/eslint-config-decent",
+      "sourceType": "github",
+      "skillPath": "skills/enforcing-typescript-standards/SKILL.md",
+      "computedHash": "f70bef61146827be70d782e576a44a04fd5646cef8fa5d0c012dac9ed450d9c4"
+    },
+    "typescript-expert": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/typescript-expert/SKILL.md",
+      "computedHash": "525e74a7220ed67832001ca89b46deae8f2bab1abc9d25c56c8716d6550c795f"
+    }
+  }
+}

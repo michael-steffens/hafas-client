@@ -8,15 +8,15 @@ import forEach from 'lodash/forEach.js';
 import {
 	checkIfResponseIsOk as checkIfResIsOk,
 	request,
-} from '../../lib/request.js';
+} from '../../dist/lib/request.js';
 import {
 	INVALID_REQUEST,
 	NOT_FOUND,
 	HafasError,
 	HafasInvalidRequestError,
 	HafasNotFoundError,
-} from '../../lib/errors.js';
-import {formatTripReq} from '../../format/trip-req.js';
+} from '../../dist/lib/errors.js';
+import {formatTripReq} from '../../dist/format/trip-req.js';
 
 const resParameter = require('../fixtures/error-parameter.json');
 const resNoMatch = require('../fixtures/error-no-match.json');

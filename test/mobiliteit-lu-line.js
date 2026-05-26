@@ -1,7 +1,7 @@
 import tap from 'tap';
 
-import {createClient} from '../index.js';
-import {profile as rawProfile} from '../p/mobiliteit-lu/index.js';
+import {createClient} from '../dist/index.js';
+import {profile as rawProfile} from '../dist/p/mobiliteit-lu/index.js';
 
 const client = createClient(rawProfile, 'public-transport/hafas-client:test');
 const {profile} = client;

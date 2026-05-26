@@ -1,8 +1,8 @@
 import tap from 'tap';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as blsProfile} from '../../p/bls/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as blsProfile} from '../../dist/p/bls/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js';
 

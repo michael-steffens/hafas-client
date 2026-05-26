@@ -2,8 +2,8 @@ import tap from 'tap';
 import isRoughlyEqual from 'is-roughly-equal';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as zvvProfile} from '../../p/zvv/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as zvvProfile} from '../../dist/p/zvv/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
 import {testJourneysStationToAddress} from './lib/journeys-station-to-address.js';

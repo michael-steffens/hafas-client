@@ -1,8 +1,8 @@
 import tap from 'tap';
 
-import {createClient} from '../index.js';
-import {withRetrying} from '../retry.js';
-import {profile as vbbProfile} from '../p/vbb/index.js';
+import {createClient} from '../dist/index.js';
+import {withRetrying} from '../dist/retry.js';
+import {profile as vbbProfile} from '../dist/p/vbb/index.js';
 
 const userAgent = 'public-transport/hafas-client:test';
 const spichernstr = '900000042101';

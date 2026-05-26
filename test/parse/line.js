@@ -1,6 +1,6 @@
 import tap from 'tap';
 import omit from 'lodash/omit.js';
-import {parseLine as parse} from '../../parse/line.js';
+import {parseLine as parse} from '../../dist/parse/line.js';
 
 const profile = {
 	products: [

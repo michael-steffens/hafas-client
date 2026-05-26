@@ -1,8 +1,8 @@
 import tap from 'tap';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as pkpProfile} from '../../p/pkp/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as pkpProfile} from '../../dist/p/pkp/index.js';
 import {
 	createValidateLine,
 	createValidateJourneyLeg,

@@ -5,8 +5,8 @@ const require = createRequire(import.meta.url);
 
 import tap from 'tap';
 
-import {createClient} from '../index.js';
-import {profile as rawProfile} from '../p/vbb/index.js';
+import {createClient} from '../dist/index.js';
+import {profile as rawProfile} from '../dist/p/vbb/index.js';
 const res = require('./fixtures/vbb-departures.json');
 import {vbbDepartures as expected} from './fixtures/vbb-departures.js';
 

@@ -5,9 +5,9 @@ const require = createRequire(import.meta.url);
 
 import tap from 'tap';
 
-import {createClient} from '../index.js';
-import {withThrottling} from '../throttle.js';
-import {profile as vbbProfile} from '../p/vbb/index.js';
+import {createClient} from '../dist/index.js';
+import {withThrottling} from '../dist/throttle.js';
+import {profile as vbbProfile} from '../dist/p/vbb/index.js';
 const depsRes = require('./fixtures/vbb-departures.json');
 
 const ua = 'public-transport/hafas-client:test';

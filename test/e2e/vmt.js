@@ -2,8 +2,8 @@ import tap from 'tap';
 import {DateTime} from 'luxon';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as vmtProfile} from '../../p/vmt/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as vmtProfile} from '../../dist/p/vmt/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
 import {testDepartures} from './lib/departures.js';

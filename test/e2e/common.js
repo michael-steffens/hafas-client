@@ -1,7 +1,7 @@
 import tap from 'tap';
 
-import {createClient} from '../../index.js';
-import {profile as vbbProfile} from '../../p/vbb/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as vbbProfile} from '../../dist/p/vbb/index.js';
 
 const client = createClient(vbbProfile, 'public-transport/hafas-client:test');
 

@@ -2,8 +2,8 @@ import tap from 'tap';
 import assert from 'assert';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as rejseplanenProfile} from '../../p/rejseplanen/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as rejseplanenProfile} from '../../dist/p/rejseplanen/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';
 import {journeysFailsWithNoProduct} from './lib/journeys-fails-with-no-product.js';

@@ -1,5 +1,5 @@
 import tap from 'tap';
-import {formatProductsFilter as format} from '../../format/products-filter.js';
+import {formatProductsFilter as format} from '../../dist/format/products-filter.js';
 
 const products = [
 	{

@@ -1,5 +1,5 @@
 import tap from 'tap';
-import {parseWarning as parse} from '../../parse/warning.js';
+import {parseWarning as parse} from '../../dist/parse/warning.js';
 import merge from 'lodash/merge.js';
 
 const profile = {

@@ -1,5 +1,5 @@
 import tap from 'tap';
-import {parseIcon as parse} from '../../parse/icon.js';
+import {parseIcon as parse} from '../../dist/parse/icon.js';
 
 const ctx = {
 	data: {},

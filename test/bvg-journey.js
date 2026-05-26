@@ -5,8 +5,8 @@ const require = createRequire(import.meta.url);
 
 import tap from 'tap';
 
-import {createClient} from '../index.js';
-import {profile as rawProfile} from '../p/bvg/index.js';
+import {createClient} from '../dist/index.js';
+import {profile as rawProfile} from '../dist/p/bvg/index.js';
 const res = require('./fixtures/bvg-journey.json');
 import {bvgJourney as expected} from './fixtures/bvg-journey.js';
 

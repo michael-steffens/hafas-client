@@ -3,8 +3,8 @@ import assert from 'assert';
 import isRoughlyEqual from 'is-roughly-equal';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as mobiliteitLuProfile} from '../../p/mobiliteit-lu/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as mobiliteitLuProfile} from '../../dist/p/mobiliteit-lu/index.js';
 import {
 	createValidateLine,
 	createValidateJourneyLeg,

@@ -1,8 +1,8 @@
 import tap from 'tap';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as stvProfile} from '../../p/stv/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as stvProfile} from '../../dist/p/stv/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 
 const T_MOCK = 1671260400 * 1000; // 2022-12-17T08:00:00+01:00

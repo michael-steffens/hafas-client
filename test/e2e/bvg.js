@@ -7,8 +7,8 @@ import {DateTime} from 'luxon';
 import flatMap from 'lodash/flatMap.js';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as bvgProfile} from '../../p/bvg/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as bvgProfile} from '../../dist/p/bvg/index.js';
 import {createValidateFptfWith as createValidate} from './lib/validate-fptf-with.js';
 import {createVbbBvgValidators} from './lib/vbb-bvg-validators.js';
 import {testJourneysStationToStation} from './lib/journeys-station-to-station.js';

@@ -3,8 +3,8 @@ import isRoughlyEqual from 'is-roughly-equal';
 import validateLine from 'validate-fptf/line.js';
 
 import {createWhen} from './lib/util.js';
-import {createClient} from '../../index.js';
-import {profile as oebbProfile} from '../../p/oebb/index.js';
+import {createClient} from '../../dist/index.js';
+import {profile as oebbProfile} from '../../dist/p/oebb/index.js';
 import {
 	createValidateStation,
 	createValidateStop,
